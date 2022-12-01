@@ -13,7 +13,10 @@ root = tk.Tk()
 # TODO: Create and use an icon later
 # img = tk.Image("photo", file="./etc/logo.png")
 # root.tk.call('wm', 'iconphoto', root._w, img)
-classroom.Classroom(root, VERSION)
+
+
+# Important to keep object saved locally to preserve variables
+c = classroom.Classroom(root, VERSION)
 
 
 root.mainloop()
