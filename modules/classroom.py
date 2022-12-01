@@ -1,20 +1,10 @@
 # This file will contain GUI structure and content for the initial launch page
 # AKA the classroom
 
-import sys
-import os
 import tkinter as tk
 import modules.styles as styles
 from PIL import ImageTk, Image
-
-
-def get_image_path(regular_path, file_name):
-	try:
-		base_path = sys._MEIPASS + "/pictures/"
-	except Exception:
-		base_path = regular_path
-
-	return os.path.join(base_path, file_name)
+import modules.test_screen as test_screen
 
 
 def do_nothing():
@@ -58,7 +48,7 @@ class Classroom:
 		self.frame_renge.rowconfigure([20, 30], weight=1)
 
 		# Set-up the picture and introduction
-		welcome_pic = tk.PhotoImage(file=get_image_path(styles.PIC_RENGE_PATH, "renge_welcome.png")).subsample(3)
+		welcome_pic = tk.PhotoImage(file=styles.get_image_path(styles.PIC_RENGE_PATH, "renge_welcome.png")).subsample(3)
 		self.renge_welcome = tk.Label(self.frame_renge, image=welcome_pic)
 		self.renge_welcome.image = welcome_pic
 		self.renge_welcome.grid(row=10, column=10, sticky="news")
@@ -70,7 +60,8 @@ class Classroom:
 		# Set-up the control frame along with its buttons
 		self.frame_control.columnconfigure([10, 90], weight=1)
 
-		self.confirm_button = tk.Button(self.frame_control, text="Let's Go!", width=20, command=do_nothing)
+		self.confirm_button = tk.Button(self.frame_control, text="Let's Go!", width=20,
+										command=self.launch_testing_screen)
 		self.confirm_button.grid(row=10, column=90, sticky="se", padx=10, pady=10)
 
 		self.report_card_button = tk.Button(self.frame_control, text="Report Card", width=20, command=do_nothing)
@@ -157,3 +148,7 @@ class Classroom:
 
 		self.report_card_button.config(state=tk.DISABLED)
 
+	def launch_testing_screen(self):
+		test = test_screen.TestScreen(self.subject_var.get(), self.count_var.get(), self.difficulty_var.get(),
+									  do_nothing)
+		test.grab_set()
