@@ -17,3 +17,4 @@ PIC_RENGE_PATH = './assets/renge_pics/'
 
 TITLE_FONT = ("calibri", 20)
 SUBTITLE_FONT = ("calibri", 15)
+KEYBOARD_FONT = ("calibri", 15)
