@@ -12,6 +12,15 @@ def get_image_path(regular_path, file_name):
 	return os.path.join(base_path, file_name)
 
 
+def get_char_set(regular_path, file_name):
+	try:
+		base_path = sys._MEIPASS + "/character_sets/"
+	except Exception:
+		base_path = regular_path
+
+	return os.path.join(base_path, file_name)
+
+
 PIC_RENGE_PATH = './assets/renge_pics/'
 
 

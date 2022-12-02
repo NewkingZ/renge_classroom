@@ -113,7 +113,7 @@ class Classroom:
 
 		tk.Label(self.settings_difficulty, text="Select question difficulty:", font=styles.FONT_SUBTITLE)\
 			.grid(row=10, column=10, sticky="w")
-		self.difficulty_var = tk.IntVar(value=3)
+		self.difficulty_var = tk.IntVar(value=2)
 		tk.Radiobutton(self.settings_difficulty, text="Beginner", variable=self.difficulty_var, value=1)\
 			.grid(row=20, column=10, sticky='w')
 		tk.Radiobutton(self.settings_difficulty, text="Easy", variable=self.difficulty_var, value=2)\
@@ -136,7 +136,7 @@ class Classroom:
 			else:
 				child.config(state=tk.DISABLED)
 
-		# Disable Difficulty for now (Hard set on regular
+		# Disable Difficulty for now (Hard set on regular)
 		for child in self.settings_difficulty.winfo_children():
 			if child.winfo_class() == 'Frame':
 				for grand_child in child.winfo_children():

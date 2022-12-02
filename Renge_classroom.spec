@@ -8,7 +8,7 @@ a = Analysis(
     ['Renge_classroom.py'],
     pathex=['./modules/'],
     binaries=[],
-    datas=[('./assets/renge_pics/renge_welcome.png', 'pictures')],
+    datas=[('./assets/character_keys/hiragana.json', 'character_sets'), ('./assets/renge_pics/renge_regular.png', 'pictures'), ('./assets/renge_pics/renge_welcome.png', 'pictures'), ('./assets/renge_pics/renge_cheerful.png', 'pictures'), ('./assets/renge_pics/renge_disappointed.png', 'pictures'), ('./assets/renge_pics/renge_disgusted.png', 'pictures'), ('./assets/renge_pics/renge_intrigued.png', 'pictures'), ('./assets/renge_pics/renge_cheerful.png', 'pictures')],
     hiddenimports=[],
     hookspath=[],
     hooksconfig={},

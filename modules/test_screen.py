@@ -1,5 +1,7 @@
 # This is the screen that's used for testing the user
 import tkinter as tk
+import tkinter.messagebox
+
 import modules.styles as styles
 import modules.hiragana as hiragana
 
@@ -98,9 +100,13 @@ class TestScreen(tk.Toplevel):
 		# Configure the control frame
 		self.frame_control.columnconfigure([10, 90], weight=1)
 
-		self.report_card_button = tk.Button(self.frame_control, text="Exit", width=20, height=3,
+		self.exit_button = tk.Button(self.frame_control, text="Exit", width=20, height=2, font=styles.FONT_TITLE,
 											command=lambda: self.destroy())
-		self.report_card_button.grid(row=10, column=10, sticky="sw", padx=10, pady=10)
+		self.exit_button.grid(row=10, column=10, sticky="sw", padx=10, pady=10)
+
+		self.next_question_button = tk.Button(self.frame_control, text="Next question", font=styles.FONT_TITLE,
+											  width=20, height=2, command=lambda: self.frame_questions.start_question())
+		self.next_question_button.grid(row=10, column=90, sticky="se", padx=10, pady=10)
 
 	def renge_change_mood(self, new_mood):
 		if new_mood == self.current_mood:
@@ -113,6 +119,7 @@ class TestScreen(tk.Toplevel):
 		self.renge_reaction.image = renge_mood
 
 	def answer_selected(self, correct):
+		# Update Renge's mood and tally
 		self.questions_completed += 1
 		if correct:
 			self.correct_answers += 1
@@ -126,7 +133,11 @@ class TestScreen(tk.Toplevel):
 			else:
 				self.renge_change_mood(1)
 
+		# Check to see if the test is completed:
+		if self.questions_completed == self.total_questions:
+			self.next_question_button.config(text="See Results!", command=self.show_results)
 
-
-
-
+	def show_results(self):
+		tkinter.messagebox.showinfo("Results", "You got " + str(self.correct_answers) + "/" +
+											   str(self.questions_completed))
+		self.destroy()

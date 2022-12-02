@@ -1,17 +1,21 @@
 # This page contains hiragana specific handling
 # This includes the required keyboards, generating questions, etc...
-
+import random
 import tkinter as tk
 import simplejson as json
 import modules.styles as styles
 
+CHEAT_ENABLED = False
+
 
 class HiraganaSetup(tk.Frame):
-	def __init__(self, root, difficulty, on_press):
+	def __init__(self, root, difficulty, question_result):
 		super().__init__(root)
 
 		self.difficulty = difficulty
-		self.on_press = on_press
+		self.question_result = question_result
+		self.answer = None
+		self.question_asked = False
 
 		# Set-up Hiragana question space
 		self.grid_propagate(False)
@@ -42,8 +46,8 @@ class HiraganaSetup(tk.Frame):
 		self.frame_keyboard.rowconfigure([0, 90], weight=1)
 		self.frame_keyboard.columnconfigure([0, 90], weight=1)
 
-		with open("./assets/character_keys/hiragana.json", "r", encoding='utf-8') as f:
-			hiragana = json.load(f)
+		with open(styles.get_char_set("./assets/character_keys/", "hiragana.json"), "r", encoding='utf-8') as f:
+			self.hiragana = json.load(f)
 
 		# Now the hard part: Translate all the Hiragana characters to buttons
 
@@ -75,19 +79,66 @@ class HiraganaSetup(tk.Frame):
 				if 11 <= j <= 15 and i == 5:
 					continue
 
-				if key_index > len(hiragana):
+				if key_index > len(self.hiragana):
 					continue
 
-				if difficulty < 4 and j >= 11:
+				if difficulty < 3 and 46 <= key_index < len(self.hiragana):
 					state = tk.DISABLED
 				else:
 					state = tk.NORMAL
 
-				tk.Button(self.frame_keyboard, text=hiragana[key_index]["kana"], font=styles.FONT_KEYBOARD,
-						  command=lambda: self.on_press(False), state=state).grid(row=i + 1, column=j + 1, padx=[padv, 5], pady=5)
+				tk.Button(self.frame_keyboard, text=self.hiragana[key_index]["kana"], font=styles.FONT_KEYBOARD,
+						  command=lambda o=key_index: self.key_pressed(self.hiragana[o]), state=state).\
+					grid(row=i + 1, column=j + 1, padx=[padv, 5], pady=5)
 
 				key_index += 1
 
-		tk.Button(self.frame_keyboard, text=hiragana[key_index]["kana"], font=styles.FONT_KEYBOARD,
-				  command=lambda: self.on_press(True)).grid(row=6, column=1, columnspan=2, padx=5, pady=5, sticky="ew")
+		tk.Button(self.frame_keyboard, text=self.hiragana[key_index]["kana"], font=styles.FONT_KEYBOARD,
+				  command=lambda o=key_index: self.key_pressed(self.hiragana[o])).\
+			grid(row=6, column=1, columnspan=2, padx=5, pady=5, sticky="ew")
+
+		self.start_question()
+
+	def start_question(self):
+		# Make sure there isn't a question waiting:
+		if self.question_asked:
+			return
+
+		# Reset all key colors first
+		for child in self.frame_keyboard.winfo_children():
+			child.config(bg='light grey')
+
+		# Select an option according to the difficulty
+		if self.difficulty < 3:
+			index = random.randint(0, 46)
+			if index == 46:
+				index = len(self.hiragana - 1)
+			self.answer = self.hiragana[index]
+		else:
+			self.answer = self.hiragana[random.randint(0, len(self.hiragana) - 1)]
+
+		if CHEAT_ENABLED:
+			self.question_var.set(self.answer["roumaji"] + " (" + self.answer["kana"] + ")")
+		else:
+			self.question_var.set(self.answer["roumaji"])
+		self.question_asked = True
+
+	def key_pressed(self, key_option):
+		if not self.question_asked:
+			return
+		self.question_asked = False
+
+		# Update tally according to the result
+		if key_option == self.answer:
+			self.question_result(True)
+		else:
+			self.question_result(False)
+
+		# Set wrong answer to red, and correct answer to green
+		for child in self.frame_keyboard.winfo_children():
+			if child["text"] == key_option["kana"]:
+				child.config(bg='red')
+			if child["text"] == self.answer["kana"]:
+				child.config(bg='green')
+
 
