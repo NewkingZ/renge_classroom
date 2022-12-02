@@ -15,6 +15,8 @@ def get_image_path(regular_path, file_name):
 PIC_RENGE_PATH = './assets/renge_pics/'
 
 
-TITLE_FONT = ("calibri", 20)
-SUBTITLE_FONT = ("calibri", 15)
-KEYBOARD_FONT = ("calibri", 15)
+FONT_TITLE = ("calibri", 20)
+FONT_SUBTITLE = ("calibri", 15)
+
+FONT_KEYBOARD = ("calibri", 20)
+FONT_QUESTION = ("calibri", 50)

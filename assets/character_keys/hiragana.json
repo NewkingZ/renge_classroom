@@ -497,13 +497,6 @@
     "suffix": "o"
   },
   {
-    "kana": "っ",
-    "roumaji": "(pause)",
-    "type": "sokuon",
-    "prefix": "",
-    "suffix": ""
-  },
-  {
     "kana": "きゃ",
     "roumaji": "kya",
     "type": "youon",
@@ -525,46 +518,25 @@
     "suffix": "yo"
   },
   {
-    "kana": "しゃ",
-    "roumaji": "sha",
+    "kana": "ぎゃ",
+    "roumaji": "gya",
     "type": "youon",
-    "prefix": "sh",
-    "suffix": "a"
+    "prefix": "g",
+    "suffix": "ya"
   },
   {
-    "kana": "しゅ",
-    "roumaji": "shu",
+    "kana": "ぎゅ",
+    "roumaji": "gyu",
     "type": "youon",
-    "prefix": "sh",
-    "suffix": "u"
+    "prefix": "g",
+    "suffix": "yu"
   },
   {
-    "kana": "しょ",
-    "roumaji": "sho",
+    "kana": "ぎょ",
+    "roumaji": "gyo",
     "type": "youon",
-    "prefix": "sh",
-    "suffix": "o"
-  },
-  {
-    "kana": "ちゃ",
-    "roumaji": "cha",
-    "type": "youon",
-    "prefix": "ch",
-    "suffix": "a"
-  },
-  {
-    "kana": "ちゅ",
-    "roumaji": "chu",
-    "type": "youon",
-    "prefix": "ch",
-    "suffix": "u"
-  },
-  {
-    "kana": "ちょ",
-    "roumaji": "cho",
-    "type": "youon",
-    "prefix": "ch",
-    "suffix": "o"
+    "prefix": "g",
+    "suffix": "yo"
   },
   {
     "kana": "にゃ",
@@ -606,6 +578,48 @@
     "roumaji": "hyo",
     "type": "youon",
     "prefix": "h",
+    "suffix": "yo"
+  },
+  {
+    "kana": "びゃ",
+    "roumaji": "bya",
+    "type": "youon",
+    "prefix": "b",
+    "suffix": "ya"
+  },
+  {
+    "kana": "びゅ",
+    "roumaji": "byu",
+    "type": "youon",
+    "prefix": "b",
+    "suffix": "yu"
+  },
+  {
+    "kana": "びょ",
+    "roumaji": "byo",
+    "type": "youon",
+    "prefix": "b",
+    "suffix": "yo"
+  },
+  {
+    "kana": "ぴゃ",
+    "roumaji": "pya",
+    "type": "youon",
+    "prefix": "p",
+    "suffix": "ya"
+  },
+  {
+    "kana": "ぴゅ",
+    "roumaji": "pyu",
+    "type": "youon",
+    "prefix": "p",
+    "suffix": "yu"
+  },
+  {
+    "kana": "ぴょ",
+    "roumaji": "pyo",
+    "type": "youon",
+    "prefix": "p",
     "suffix": "yo"
   },
   {
@@ -651,27 +665,6 @@
     "suffix": "yo"
   },
   {
-    "kana": "ぎゃ",
-    "roumaji": "gya",
-    "type": "youon",
-    "prefix": "g",
-    "suffix": "ya"
-  },
-  {
-    "kana": "ぎゅ",
-    "roumaji": "gyu",
-    "type": "youon",
-    "prefix": "g",
-    "suffix": "yu"
-  },
-  {
-    "kana": "ぎょ",
-    "roumaji": "gyo",
-    "type": "youon",
-    "prefix": "g",
-    "suffix": "yo"
-  },
-  {
     "kana": "じゃ",
     "roumaji": "ja",
     "type": "youon",
@@ -686,52 +679,80 @@
     "suffix": "u"
   },
   {
+    "kana": "じえ",
+    "roumaji": "je",
+    "type": "youon",
+    "prefix": "j",
+    "suffix": "e"
+  },
+  {
     "kana": "じょ",
     "roumaji": "jo",
     "type": "youon",
     "prefix": "j",
+    "suffix": "o"
+  },
+  {
+    "kana": "ちゃ",
+    "roumaji": "cha",
+    "type": "youon",
+    "prefix": "ch",
+    "suffix": "a"
+  },
+  {
+    "kana": "ちゅ",
+    "roumaji": "chu",
+    "type": "youon",
+    "prefix": "ch",
     "suffix": "u"
   },
   {
-    "kana": "びゃ",
-    "roumaji": "bya",
+    "kana": "ちえ",
+    "roumaji": "che",
     "type": "youon",
-    "prefix": "b",
-    "suffix": "ya"
+    "prefix": "ch",
+    "suffix": "e"
   },
   {
-    "kana": "びゅ",
-    "roumaji": "byu",
+    "kana": "ちょ",
+    "roumaji": "cho",
     "type": "youon",
-    "prefix": "b",
-    "suffix": "yu"
+    "prefix": "ch",
+    "suffix": "o"
   },
   {
-    "kana": "びょ",
-    "roumaji": "byo",
+    "kana": "しゃ",
+    "roumaji": "sha",
     "type": "youon",
-    "prefix": "b",
-    "suffix": "yo"
+    "prefix": "sh",
+    "suffix": "a"
   },
   {
-    "kana": "ぴゃ",
-    "roumaji": "pya",
+    "kana": "しゅ",
+    "roumaji": "shu",
     "type": "youon",
-    "prefix": "p",
-    "suffix": "ya"
+    "prefix": "sh",
+    "suffix": "u"
   },
   {
-    "kana": "ぴゅ",
-    "roumaji": "pyu",
+    "kana": "しえ",
+    "roumaji": "she",
     "type": "youon",
-    "prefix": "p",
-    "suffix": "yu"
+    "prefix": "sh",
+    "suffix": "e"
   },
   {
-    "kana": "ぴょ",
-    "roumaji": "pyo",
+    "kana": "しょ",
+    "roumaji": "sho",
     "type": "youon",
-    "prefix": "p",
-    "suffix": "yo"
+    "prefix": "sh",
+    "suffix": "o"
+  },
+  {
+    "kana": "っ",
+    "roumaji": "(pause)",
+    "type": "sokuon",
+    "prefix": "",
+    "suffix": ""
   }
 ]

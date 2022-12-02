@@ -53,8 +53,8 @@ class Classroom:
 		self.renge_welcome.image = welcome_pic
 		self.renge_welcome.grid(row=10, column=10, sticky="news")
 
-		tk.Label(self.frame_renge, text="Nyanpasu!", font=styles.TITLE_FONT).grid(row=20, column=10, sticky="news")
-		tk.Label(self.frame_renge, text="Ready to practice some Japanese?", font=styles.SUBTITLE_FONT).\
+		tk.Label(self.frame_renge, text="Nyanpasu!", font=styles.FONT_TITLE).grid(row=20, column=10, sticky="news")
+		tk.Label(self.frame_renge, text="Ready to practice some Japanese?", font=styles.FONT_SUBTITLE).\
 			grid(row=30, column=10, sticky="news")
 
 		# Set-up the control frame along with its buttons
@@ -85,7 +85,7 @@ class Classroom:
 		self.settings_subject.rowconfigure(90, weight=1)
 		self.settings_subject.columnconfigure(10, weight=1)
 
-		tk.Label(self.settings_subject, text="Select subject:", font=styles.SUBTITLE_FONT)\
+		tk.Label(self.settings_subject, text="Select subject:", font=styles.FONT_SUBTITLE)\
 			.grid(row=10, column=10, sticky="w")
 		self.subject_var = tk.IntVar(value=1)
 		tk.Radiobutton(self.settings_subject, text="Hiragana", variable=self.subject_var, value=1)\
@@ -99,7 +99,7 @@ class Classroom:
 		self.settings_count.rowconfigure(90, weight=1)
 		self.settings_count.columnconfigure(10, weight=1)
 
-		tk.Label(self.settings_count, text="Select number of test questions:", font=styles.SUBTITLE_FONT)\
+		tk.Label(self.settings_count, text="Select number of test questions:", font=styles.FONT_SUBTITLE)\
 			.grid(row=10, column=10, sticky="w")
 		self.count_var = tk.IntVar(value="10")
 		tk.Radiobutton(self.settings_count, text="10", variable=self.count_var, value=10)\
@@ -111,7 +111,7 @@ class Classroom:
 		tk.Radiobutton(self.settings_count, text="100", variable=self.count_var, value=100)\
 			.grid(row=50, column=10, sticky='w')
 
-		tk.Label(self.settings_difficulty, text="Select question difficulty:", font=styles.SUBTITLE_FONT)\
+		tk.Label(self.settings_difficulty, text="Select question difficulty:", font=styles.FONT_SUBTITLE)\
 			.grid(row=10, column=10, sticky="w")
 		self.difficulty_var = tk.IntVar(value=3)
 		tk.Radiobutton(self.settings_difficulty, text="Beginner", variable=self.difficulty_var, value=1)\
@@ -149,6 +149,5 @@ class Classroom:
 		self.report_card_button.config(state=tk.DISABLED)
 
 	def launch_testing_screen(self):
-		test = test_screen.TestScreen(self.subject_var.get(), self.count_var.get(), self.difficulty_var.get(),
-									  do_nothing)
+		test = test_screen.TestScreen(self.subject_var.get(), self.count_var.get(), self.difficulty_var.get())
 		test.grab_set()
