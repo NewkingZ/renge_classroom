@@ -1,6 +1,7 @@
 # This is the screen that's used for testing the user
 import tkinter as tk
 import tkinter.messagebox
+import time
 
 import modules.styles as styles
 import modules.hiragana as hiragana
@@ -46,9 +47,15 @@ class TestScreen(tk.Toplevel):
 		self.subject = subject
 		self.total_questions = question_count
 		self.difficulty = difficulty
+
+		# Keep track of question progression
 		self.questions_completed = 0
 		self.correct_answers = 0
 		self.current_mood = 2
+
+		# Keep track of time taken
+		self.time_total = 0
+		self.time_waiting = 0
 
 		self.title("Testing " + str(self.total_questions) + " of " + subject_from_int(self.subject) + " at difficulty "
 				   + str(self.difficulty))
@@ -105,8 +112,11 @@ class TestScreen(tk.Toplevel):
 		self.exit_button.grid(row=10, column=10, sticky="sw", padx=10, pady=10)
 
 		self.next_question_button = tk.Button(self.frame_control, text="Next question", font=styles.FONT_TITLE,
-											  width=20, height=2, command=lambda: self.frame_questions.start_question())
+											  width=20, height=2, command=lambda: self.go_next(None))
 		self.next_question_button.grid(row=10, column=90, sticky="se", padx=10, pady=10)
+
+		self.time_waiting = time.time()
+		self.bind('<space>', self.go_next)
 
 	def renge_change_mood(self, new_mood):
 		if new_mood == self.current_mood:
@@ -119,6 +129,11 @@ class TestScreen(tk.Toplevel):
 		self.renge_reaction.image = renge_mood
 
 	def answer_selected(self, correct):
+		# Update the time values
+		time_spent = time.time() - self.time_waiting
+		self.time_total += time_spent
+		print(time_spent)
+
 		# Update Renge's mood and tally
 		self.questions_completed += 1
 		if correct:
@@ -135,9 +150,17 @@ class TestScreen(tk.Toplevel):
 
 		# Check to see if the test is completed:
 		if self.questions_completed == self.total_questions:
-			self.next_question_button.config(text="See Results!", command=self.show_results)
+			self.next_question_button.config(text="See Results!")
 
 	def show_results(self):
+		avg_time = round(self.time_total / self.questions_completed, 3)
 		tkinter.messagebox.showinfo("Results", "You got " + str(self.correct_answers) + "/" +
-											   str(self.questions_completed))
+							str(self.questions_completed) + " with an average time of " + str(avg_time) + " seconds")
 		self.destroy()
+
+	def go_next(self, *args):
+		if self.questions_completed == self.total_questions:
+			self.show_results()
+		else:
+			self.frame_questions.start_question()
+			self.time_waiting = time.time()

@@ -16,6 +16,7 @@ class HiraganaSetup(tk.Frame):
 		self.question_result = question_result
 		self.answer = None
 		self.question_asked = False
+		self.question_count = 0
 
 		# Set-up Hiragana question space
 		self.grid_propagate(False)
@@ -36,7 +37,8 @@ class HiraganaSetup(tk.Frame):
 		self.frame_question.rowconfigure([0, 90], weight=1)
 		self.frame_question.columnconfigure([0, 90], weight=1)
 
-		tk.Label(self.frame_question, text="Select the symbol associated with:", font=styles.FONT_TITLE).\
+		self.question_text_var = tk.StringVar(value="-")
+		tk.Label(self.frame_question, textvariable=self.question_text_var, font=styles.FONT_TITLE).\
 			grid(row=10, column=10)
 		self.question_var = tk.StringVar(value="-")
 		tk.Label(self.frame_question, textvariable=self.question_var, font=styles.FONT_QUESTION).grid(row=20, column=10)
@@ -103,6 +105,9 @@ class HiraganaSetup(tk.Frame):
 		# Make sure there isn't a question waiting:
 		if self.question_asked:
 			return
+		self.question_asked = True
+
+		self.question_count += 1
 
 		# Reset all key colors first
 		for child in self.frame_keyboard.winfo_children():
@@ -112,7 +117,7 @@ class HiraganaSetup(tk.Frame):
 		if self.difficulty < 3:
 			index = random.randint(0, 46)
 			if index == 46:
-				index = len(self.hiragana - 1)
+				index = len(self.hiragana) - 1
 			self.answer = self.hiragana[index]
 		else:
 			self.answer = self.hiragana[random.randint(0, len(self.hiragana) - 1)]
@@ -121,7 +126,8 @@ class HiraganaSetup(tk.Frame):
 			self.question_var.set(self.answer["roumaji"] + " (" + self.answer["kana"] + ")")
 		else:
 			self.question_var.set(self.answer["roumaji"])
-		self.question_asked = True
+
+		self.question_text_var.set("Question " + str(self.question_count) + ": Select the symbol associated with")
 
 	def key_pressed(self, key_option):
 		if not self.question_asked:
