@@ -5,6 +5,7 @@ import tkinter as tk
 import modules.styles as styles
 from PIL import ImageTk, Image
 import modules.test_screen as test_screen
+import modules.result_screen as score_screen
 
 
 def do_nothing():

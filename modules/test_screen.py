@@ -5,6 +5,7 @@ import time
 
 import modules.styles as styles
 import modules.hiragana as hiragana
+import modules.result_screen as score_screen
 
 SUBJECT_HIRAGANA = 1
 SUBJECT_KATAKANA = 2
@@ -17,7 +18,7 @@ DIFFICULTY_HARD = 1
 DIFFICULTY_EXTREME = 1
 
 # Picture path along with subsample modifier (TBI)
-RENGE_MOOD_PICS = [["renge_disappointed.png", 1],
+RENGE_MOOD_PICS = [["renge_disappointed.png", 2],
 				   ["renge_disgusted.png", 2],
 				   ["renge_regular.png", 2],
 				   ["renge_intrigued.png", 2],
@@ -71,7 +72,7 @@ class TestScreen(tk.Toplevel):
 		self.rowconfigure(10, weight=1)
 		self.rowconfigure(20, weight=2)
 		self.columnconfigure(10, weight=2)
-		self.propagate(False)
+		self.grid_propagate(False)
 
 		# Now for the Frame creation and placement:
 		self.frame_renge = tk.Frame(self, padx=5, pady=5, name="renge")
@@ -132,7 +133,6 @@ class TestScreen(tk.Toplevel):
 		# Update the time values
 		time_spent = time.time() - self.time_waiting
 		self.time_total += time_spent
-		print(time_spent)
 
 		# Update Renge's mood and tally
 		self.questions_completed += 1
@@ -154,8 +154,10 @@ class TestScreen(tk.Toplevel):
 
 	def show_results(self):
 		avg_time = round(self.time_total / self.questions_completed, 3)
-		tkinter.messagebox.showinfo("Results", "You got " + str(self.correct_answers) + "/" +
-							str(self.questions_completed) + " with an average time of " + str(avg_time) + " seconds")
+
+		score_screen.TestResults(subject_from_int(self.subject), self.difficulty, self.total_questions,
+								 self.correct_answers, avg_time)
+
 		self.destroy()
 
 	def go_next(self, *args):

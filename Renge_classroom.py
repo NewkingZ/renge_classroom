@@ -6,7 +6,7 @@
 import tkinter as tk
 import modules.classroom as classroom
 
-VERSION = 'V1.0'
+VERSION = 'V0.1'
 
 # Start GUI & set icon
 root = tk.Tk()

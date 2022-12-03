@@ -26,6 +26,6 @@ PIC_RENGE_PATH = './assets/renge_pics/'
 
 FONT_TITLE = ("calibri", 20)
 FONT_SUBTITLE = ("calibri", 15)
-
 FONT_KEYBOARD = ("calibri", 20)
 FONT_QUESTION = ("calibri", 50)
+FONT_FINAL_GRADE = ("calibri", 125)
