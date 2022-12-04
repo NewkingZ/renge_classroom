@@ -139,10 +139,10 @@ class TestScreen(tk.Toplevel):
 	def show_results(self):
 		avg_time = round(self.time_total / self.questions_completed, 3)
 
-		score_screen.TestResults(self.subject, self.difficulty, self.total_questions,
-								 self.correct_answers, avg_time)
-
 		self.destroy()
+		results = score_screen.TestResults(self.subject, self.difficulty, self.total_questions,
+								 self.correct_answers, avg_time)
+		results.grab_set()
 
 	def go_next(self, *args):
 		if self.questions_completed == self.total_questions:

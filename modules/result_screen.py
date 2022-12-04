@@ -3,6 +3,7 @@
 
 import tkinter as tk
 import modules.styles as styles
+import modules.statistics as statistics
 
 # Picture path along with subsample modifier (TBI)
 RENGE_MOOD_PICS = {'F': ["renge_dying_inside.png", 2],
@@ -108,4 +109,4 @@ class TestResults(tk.Toplevel):
 		tk.Label(self.frame_metrics, text=self.score, fg=grade_color,
 				 font=styles.FONT_FINAL_GRADE).grid(row=14, column=10, sticky="new")
 
-
+		statistics.validate_score(subject, difficulty, total_answers, correct_answers, average_time, self.score.lower())
