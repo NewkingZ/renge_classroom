@@ -5,7 +5,7 @@ import tkinter as tk
 import modules.styles as styles
 from PIL import ImageTk, Image
 import modules.test_screen as test_screen
-import modules.result_screen as score_screen
+import modules.statistics as statistics
 
 
 def do_nothing():
@@ -22,6 +22,9 @@ class Classroom:
 		# self.window.geometry("%dx%d+200+100" % (self.window.winfo_screenwidth(), self.window.winfo_screenheight()))
 		self.window.minsize(1000, 800)
 		self.window.resizable(False, False)
+
+		# Initialization process for other modules
+		statistics.init_stats()
 
 		# Start setting up the GUI content
 		# Structure will consist of 3 frames:
@@ -88,12 +91,12 @@ class Classroom:
 
 		tk.Label(self.settings_subject, text="Select subject:", font=styles.FONT_SUBTITLE)\
 			.grid(row=10, column=10, sticky="w")
-		self.subject_var = tk.IntVar(value=1)
-		tk.Radiobutton(self.settings_subject, text="Hiragana", variable=self.subject_var, value=1)\
+		self.subject_var = tk.StringVar(value=styles.SUBJECT_HIRAGANA)
+		tk.Radiobutton(self.settings_subject, text="Hiragana", variable=self.subject_var, value=styles.SUBJECT_HIRAGANA)\
 			.grid(row=20, column=10, sticky='w')
-		tk.Radiobutton(self.settings_subject, text="Katakana", variable=self.subject_var, value=2)\
+		tk.Radiobutton(self.settings_subject, text="Katakana", variable=self.subject_var, value=styles.SUBJECT_KATAKANA)\
 			.grid(row=30, column=10, sticky='w')
-		tk.Radiobutton(self.settings_subject, text="Kanji", variable=self.subject_var, value=3)\
+		tk.Radiobutton(self.settings_subject, text="Kanji", variable=self.subject_var, value=styles.SUBJECT_KANJI)\
 			.grid(row=40, column=10, sticky='w')
 
 		# Set up the question count frame

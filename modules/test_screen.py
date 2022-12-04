@@ -7,10 +7,6 @@ import modules.styles as styles
 import modules.hiragana as hiragana
 import modules.result_screen as score_screen
 
-SUBJECT_HIRAGANA = 1
-SUBJECT_KATAKANA = 2
-SUBJECT_KANJI = 3
-
 DIFFICULTY_BEGINNER = 1
 DIFFICULTY_EASY = 1
 DIFFICULTY_REGULAR = 1
@@ -30,18 +26,6 @@ def on_press(pressed):
 	print("The " + str(pressed) + "was pressed")
 
 
-# Convert int to text subject
-def subject_from_int(subject):
-	if subject == SUBJECT_HIRAGANA:
-		return "Hiragana"
-	elif subject == SUBJECT_KATAKANA:
-		return "Katakana"
-	elif subject == SUBJECT_KANJI:
-		return "Kanji"
-	else:
-		return "Unknown"
-
-
 class TestScreen(tk.Toplevel):
 	def __init__(self, subject, question_count, difficulty):
 		tk.Toplevel.__init__(self)
@@ -58,7 +42,7 @@ class TestScreen(tk.Toplevel):
 		self.time_total = 0
 		self.time_waiting = 0
 
-		self.title("Testing " + str(self.total_questions) + " of " + subject_from_int(self.subject) + " at difficulty "
+		self.title("Testing " + str(self.total_questions) + " of " + self.subject + " at difficulty "
 				   + str(self.difficulty))
 		self.attributes("-fullscreen", True)
 
@@ -77,7 +61,7 @@ class TestScreen(tk.Toplevel):
 		# Now for the Frame creation and placement:
 		self.frame_renge = tk.Frame(self, padx=5, pady=5, name="renge")
 		self.frame_control = tk.Frame(self, padx=5, pady=5, name="control")
-		if self.subject == SUBJECT_HIRAGANA:
+		if self.subject == styles.SUBJECT_HIRAGANA:
 			self.frame_questions = hiragana.HiraganaSetup(self, self.difficulty, self.answer_selected)
 		else:
 			print("Other subjects not yet set-up")
@@ -94,7 +78,7 @@ class TestScreen(tk.Toplevel):
 
 		# Set-up the picture and introduction
 		tk.Label(self.frame_renge, text="Testing " + str(self.total_questions) + " questions of " +
-										 subject_from_int(self.subject) + " at difficulty " + str(self.difficulty),
+										 self.subject + " at difficulty " + str(self.difficulty),
 										 font=styles.FONT_TITLE).grid(row=0, column=10, sticky="new", pady=10)
 		reaction_pic = tk.PhotoImage(file=styles.get_image_path(styles.PIC_RENGE_PATH,
 								RENGE_MOOD_PICS[self.current_mood][0])).subsample(RENGE_MOOD_PICS[self.current_mood][1])
@@ -155,7 +139,7 @@ class TestScreen(tk.Toplevel):
 	def show_results(self):
 		avg_time = round(self.time_total / self.questions_completed, 3)
 
-		score_screen.TestResults(subject_from_int(self.subject), self.difficulty, self.total_questions,
+		score_screen.TestResults(self.subject, self.difficulty, self.total_questions,
 								 self.correct_answers, avg_time)
 
 		self.destroy()

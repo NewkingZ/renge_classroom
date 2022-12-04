@@ -1,4 +1,5 @@
 # This contains the class for the custom tk toplevel screen for test results
+# TODO: Manage results and scores according to subject and difficulty (calculations accordingly may change)
 
 import tkinter as tk
 import modules.styles as styles
@@ -85,7 +86,7 @@ class TestResults(tk.Toplevel):
 				 font=styles.FONT_TITLE).grid(row=10, column=10, sticky="nw", padx=5, pady=5)
 		tk.Label(self.frame_metrics, text="Correct Answers: " + str(correct_answers) + "/" + str(total_answers),
 				 font=styles.FONT_SUBTITLE).grid(row=11, column=10, sticky="nw", padx=5, pady=5)
-		tk.Label(self.frame_metrics, text="Average Time per Question: " + str(average_time),
+		tk.Label(self.frame_metrics, text="Average Time per Question: " + str(average_time) + " seconds",
 				 font=styles.FONT_SUBTITLE).grid(row=12, column=10, sticky="nw", padx=5, pady=5)
 
 		tk.Label(self.frame_metrics, text="Final Grade: ",

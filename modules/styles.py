@@ -29,3 +29,8 @@ FONT_SUBTITLE = ("calibri", 15)
 FONT_KEYBOARD = ("calibri", 20)
 FONT_QUESTION = ("calibri", 50)
 FONT_FINAL_GRADE = ("calibri", 125)
+
+SUBJECT_HIRAGANA = "Hiragana"
+SUBJECT_KATAKANA = "Katakana"
+SUBJECT_KANJI = "Kanji"
+
