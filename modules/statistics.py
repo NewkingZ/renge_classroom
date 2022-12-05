@@ -36,9 +36,9 @@ def init_stats():
 			f.write(key)
 
 		empty_data = dict()
-		for subject in [styles.SUBJECT_HIRAGANA, styles.SUBJECT_HIRAGANA, styles.SUBJECT_HIRAGANA]:
+		for subject in [styles.SUBJECT_HIRAGANA, styles.SUBJECT_KATAKANA, styles.SUBJECT_KANJI]:
 			empty_data[subject] = dict()
-			for difficulty in range(1, 5):
+			for difficulty in range(1, 6):
 				empty_data[subject]["difficulty_" + str(difficulty)] = dict()
 				empty_data[subject]["difficulty_" + str(difficulty)]["avg_time"] = None
 				empty_data[subject]["difficulty_" + str(difficulty)]["total_questions"] = None
@@ -53,8 +53,6 @@ def init_stats():
 		# Write encrypted data
 		with open(PATH_STATISTICS + HIGH_SCORES, 'wb') as f:
 			f.write(encrypted_string)
-	else:
-		print(str(get_score_data()))
 
 
 def get_score_data():
@@ -80,7 +78,7 @@ def put_score_data(score_data):
 
 def validate_score(subject, difficulty, total_questions, correct_questions, avg_time, letter_grade):
 	# There is currently a minimum of 50 questions
-	if total_questions < 10:
+	if total_questions < 50:
 		return
 
 	if difficulty not in range(1, 5) or subject not in [styles.SUBJECT_HIRAGANA, styles.SUBJECT_KATAKANA,

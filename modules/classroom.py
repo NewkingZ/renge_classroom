@@ -6,6 +6,7 @@ import modules.styles as styles
 from PIL import ImageTk, Image
 import modules.test_screen as test_screen
 import modules.statistics as statistics
+import modules.report_card as report_card
 
 
 def do_nothing():
@@ -68,7 +69,8 @@ class Classroom:
 										command=self.launch_testing_screen)
 		self.confirm_button.grid(row=10, column=90, sticky="se", padx=10, pady=10)
 
-		self.report_card_button = tk.Button(self.frame_control, text="Report Card", width=20, command=do_nothing)
+		self.report_card_button = tk.Button(self.frame_control, text="Report Card", width=20,
+											command=self.launch_report_card)
 		self.report_card_button.grid(row=10, column=10, sticky="sw", padx=10, pady=10)
 
 		# Set-up the settings frame
@@ -150,8 +152,11 @@ class Classroom:
 			else:
 				child.config(state=tk.DISABLED)
 
-		self.report_card_button.config(state=tk.DISABLED)
-
 	def launch_testing_screen(self):
 		test = test_screen.TestScreen(self.subject_var.get(), self.count_var.get(), self.difficulty_var.get())
 		test.grab_set()
+
+	def launch_report_card(self):
+		report_screen = report_card.ReportCard()
+		report_screen.grab_set()
+		print(self.count_var.get())
