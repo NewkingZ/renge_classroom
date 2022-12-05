@@ -46,7 +46,6 @@ def init_stats():
 				empty_data[subject]["difficulty_" + str(difficulty)]["letter_grade"] = None
 
 		empty_data_string = json.dumps(empty_data)
-		print(empty_data_string)
 		encryption = fernet.Fernet(key)
 		encrypted_string = encryption.encrypt(empty_data_string.encode())
 
