@@ -90,7 +90,7 @@ def validate_score(subject, difficulty, total_questions, correct_questions, avg_
 		current_scores[subject]["difficulty_" + str(difficulty)]["avg_time"] = avg_time
 		current_scores[subject]["difficulty_" + str(difficulty)]["total_questions"] = total_questions
 		current_scores[subject]["difficulty_" + str(difficulty)]["correct_answers"] = correct_questions
-		current_scores[subject]["difficulty_" + str(difficulty)]["letter_grade"] = letter_grade
+		current_scores[subject]["difficulty_" + str(difficulty)]["letter_grade"] = letter_grade.upper()
 		put_score_data(current_scores)
 		return
 
@@ -111,7 +111,7 @@ def validate_score(subject, difficulty, total_questions, correct_questions, avg_
 		current_scores[subject]["difficulty_" + str(difficulty)]["avg_time"] = avg_time
 		current_scores[subject]["difficulty_" + str(difficulty)]["total_questions"] = total_questions
 		current_scores[subject]["difficulty_" + str(difficulty)]["correct_answers"] = correct_questions
-		current_scores[subject]["difficulty_" + str(difficulty)]["letter_grade"] = letter_grade
+		current_scores[subject]["difficulty_" + str(difficulty)]["letter_grade"] = letter_grade.upper()
 		put_score_data(current_scores)
 		return
 
@@ -121,7 +121,7 @@ def validate_score(subject, difficulty, total_questions, correct_questions, avg_
 		current_scores[subject]["difficulty_" + str(difficulty)]["avg_time"] = avg_time
 		current_scores[subject]["difficulty_" + str(difficulty)]["total_questions"] = total_questions
 		current_scores[subject]["difficulty_" + str(difficulty)]["correct_answers"] = correct_questions
-		current_scores[subject]["difficulty_" + str(difficulty)]["letter_grade"] = letter_grade
+		current_scores[subject]["difficulty_" + str(difficulty)]["letter_grade"] = letter_grade.upper()
 		put_score_data(current_scores)
 		return
 
@@ -130,7 +130,7 @@ def validate_score(subject, difficulty, total_questions, correct_questions, avg_
 		current_scores[subject]["difficulty_" + str(difficulty)]["avg_time"] = avg_time
 		current_scores[subject]["difficulty_" + str(difficulty)]["total_questions"] = total_questions
 		current_scores[subject]["difficulty_" + str(difficulty)]["correct_answers"] = correct_questions
-		current_scores[subject]["difficulty_" + str(difficulty)]["letter_grade"] = letter_grade
+		current_scores[subject]["difficulty_" + str(difficulty)]["letter_grade"] = letter_grade.upper()
 		put_score_data(current_scores)
 		return
 	else:
