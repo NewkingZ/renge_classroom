@@ -126,7 +126,7 @@ def validate_score(subject, difficulty, total_questions, correct_questions, avg_
 		return
 
 	elif current_scores[subject]["difficulty_" + str(difficulty)]["correct_answers"] == correct_questions and \
-		avg_time < float(current_scores[subject]["difficulty_" + difficulty]["avg_time"]):
+		avg_time < float(current_scores[subject]["difficulty_" + str(difficulty)]["avg_time"]):
 		current_scores[subject]["difficulty_" + str(difficulty)]["avg_time"] = avg_time
 		current_scores[subject]["difficulty_" + str(difficulty)]["total_questions"] = total_questions
 		current_scores[subject]["difficulty_" + str(difficulty)]["correct_answers"] = correct_questions

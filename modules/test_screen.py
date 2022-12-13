@@ -5,6 +5,7 @@ import time
 
 import modules.styles as styles
 import modules.hiragana as hiragana
+import modules.katakana as katakana
 import modules.result_screen as score_screen
 
 DIFFICULTY_BEGINNER = 1
@@ -63,6 +64,8 @@ class TestScreen(tk.Toplevel):
 		self.frame_control = tk.Frame(self, padx=5, pady=5, name="control")
 		if self.subject == styles.SUBJECT_HIRAGANA:
 			self.frame_questions = hiragana.HiraganaSetup(self, self.difficulty, self.answer_selected)
+		elif self.subject == styles.SUBJECT_KATAKANA:
+			self.frame_questions = katakana.KatakanaSetup(self, self.difficulty, self.answer_selected)
 		else:
 			print("Other subjects not yet set-up")
 			self.frame_keyboard = tk.Frame(self, padx=5, pady=5, name="keyboard")

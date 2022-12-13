@@ -140,7 +140,10 @@ class Classroom:
 			elif child.winfo_class() == 'TSeparator':
 				pass
 			else:
-				child.config(state=tk.DISABLED)
+				if child['text'] == 'Hiragana' or child['text'] == 'Katakana':
+					pass
+				else:
+					child.config(state=tk.DISABLED)
 
 		# Disable Difficulty for now (Hard set on regular)
 		for child in self.settings_difficulty.winfo_children():
